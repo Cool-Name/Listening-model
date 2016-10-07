@@ -1,0 +1,10 @@
+/*
+ * Specifies the allowed actions on a server explicitly listening
+ */
+public class ListenerGit
+{
+	public boolean pull(String repo)
+	{
+
+	}
+}
