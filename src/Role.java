@@ -1,0 +1,22 @@
+import java.util.*;
+
+public class Role
+{
+	private String label;
+	private ArrayList<String> repos;	
+
+	public Role(String label, ArrayList<String> repos)
+	{
+		this.label = label;
+		this.repos = repos;
+	}
+
+	public String getLabel()
+	{
+		return label;
+	}
+	public ArrayList<String> getRepos()
+	{
+		return repos;
+	}
+}

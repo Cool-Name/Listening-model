@@ -66,7 +66,7 @@ public class ClientListener
 			{
 				for(int i = 2; i < splits.length; i++)
 				{
-					// Pull down the specified repos
+					// Clone a new repo and pull existin repos
 				}
 			}
 			else if(splits[1].toLowerCase() == LIST)
