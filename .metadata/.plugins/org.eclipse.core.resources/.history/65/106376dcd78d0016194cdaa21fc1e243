@@ -1,0 +1,102 @@
+import java.io.*;
+import java.util.*;
+
+/*
+ * Class to listen for commands from an active-client
+ * Supports pulling of a repository, requests for current
+ * environment, environment state and change-timestamp
+ *
+ * NON-INSTANTIABLE
+ */
+public class ClientListener
+{
+
+	//TODO: Put this shit in it's own class
+	private static final String PULL = "pull";
+	private static final String LIST = "list";
+	private static final String ENV = "env";
+	private static final String ROLE = "rol";
+	private static final String CURR_STATE = "currstate";
+	private static final String CHANGE_STATE = "changestate";
+	private static final String FILE = "file";
+
+	
+	private static final int BUFFER_SIZE = 1024;
+	
+	public static void main(String[] args)
+	{
+		ServerSocket connSocket = new ServerSocket(65051);
+		String inputCommand;
+
+		while(true)
+		{
+			Socket activeSocket = connSocket.accept();
+			BufferedReader inFromClient = new BufferedReader(new InputStreamReader(activeSocket.getInputStream()));
+			DataOutputStream outToClient = new DataOutputStream(activeSocket.getOutputStream());
+
+			inputCommand = inFromCient.readLine();
+			if(inputCommand != null && !inputCommand.isEmpty())
+			{
+				ListenerWorker worker = new ListenerWorker(inputCommand);
+				
+				// Get the return of the thread
+			}		
+		}
+	}
+
+	class ListenerWorker extends Thread
+	{
+		private String input;
+		private volatile String response;	// Volatile is possibly the best thing ever
+
+		public ListenerWorker(String input)
+		{
+			this.input = input;
+		}
+
+		public void run()
+		{
+			String[] splits	= input.split(" ");
+			// 0: timestamp
+			// 1: command
+
+			StringBuilder responseBuilder = new StringBuilder();
+
+			if(splits[1].toLowerCase() == PULL)
+			{
+				for(int i = 2; i < splits.length; i++)
+				{
+					// Clone a new repo and pull existin repos
+				}
+			}
+			else if(splits[1].toLowerCase() == LIST)
+			{	
+				if(splits.length < 3 || splits[2].toLowerCase() == ENV)
+				{
+					// Return env
+				}
+				else if(splits[2].toLowerCase() == ROLE)
+				{
+					// Return role
+				}
+			}
+			else if(splits[1].toLowerCase() == CURR_STATE)
+			{
+				// return currstate
+			}
+			else if(splits[1].toLowerCase() == CHANGE_STATE)
+			{
+				// Change state				
+			}
+			else if(splits[1].toLowerCase() == FILE)
+			{
+				// Build an image file, send it then return success
+			}
+		}
+
+		public String getResponse()
+		{
+			return response;
+		}
+	}
+}

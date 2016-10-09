@@ -18,7 +18,7 @@ public class Environment
 		mostRecentChange = curr;
 	}
 
-	public getLabel()
+	public String getLabel()
 	{
 		return label;
 	}
@@ -26,15 +26,15 @@ public class Environment
 	{
 		return roles;	
 	}
-	public getcreationDate()
+	public Date getcreationDate()
 	{
 		return creationDate;
 	}
-	public getMostRecentChange()
+	public Date getMostRecentChange()
 	{
 		return mostRecentChange;
 	}
-	public setMostRecentChange(Date newDate)
+	public void setMostRecentChange(Date newDate)
 	{
 		this.mostRecentChange = newDate;
 	}
